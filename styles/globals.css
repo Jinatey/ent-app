@@ -25,3 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.gridd{
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  padding: 1rem;
+  min-height: 700px;
+  background-color:rgb(18, 7, 58);
+}

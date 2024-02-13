@@ -454,4 +454,4 @@ export const data = [
     isBookmarked: true,
     isTrending: false,
   },
-];
+] as const;

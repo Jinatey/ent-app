@@ -3,7 +3,7 @@ import { data } from "@/data";
 
 export default function home() {
   return (
-    <div className="ml-10 bg to-blue-950 text-blue-200">
+    <div className=" bg to-blue-950 text-blue-200">
       <div className="p-3">
         <div className="p-2">lorem 20``
         <p>dkfkd</p>

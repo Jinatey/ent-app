@@ -454,4 +454,6 @@ export const data = [
     isBookmarked: true,
     isTrending: false,
   },
-] as const;
+];
+
+export type MovieItemType = (typeof data)[number];

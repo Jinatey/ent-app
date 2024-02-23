@@ -22,7 +22,6 @@ const sideData = [
 
 export const Sidebar = () => {
   const router = useRouter();
-  console.log(router);
 
   return (
     <div>
@@ -48,38 +47,40 @@ export const Sidebar = () => {
               />
             </div>
           ))}
-          
         </div>
         <div>
-            <img className="w-11" src="assets/image-avatar.png" alt="" />
-          </div>
+          <img className="w-11" src="assets/image-avatar.png" alt="" />
+        </div>
       </div>
-
-      <div></div>
+      {""}
+      {""}
+      {""}
       <div className=" max-md:hidden rounded-md py-4 m-3 grid justify-center w-[90px] h-[600px]  fixed bg-slate-800">
         <div className=" flex  flex-col  justify-between">
-          <img className="w- p-1 py-]" src="logo.svg" alt="" />
+          <div>
+            <img className="w- p-1 py-]" src="logo.svg" alt="" />
 
-          <div className="grid gap-9">
-            {sideData.map((data) => (
-              <div className="  flex  justify-center">
-                <img
-                  onClick={() => {
-                    router.push(data.path);
-                  }}
-                  className="w-8 h-8"
-                  src={
-                    data.path === router.pathname
-                      ? `${data.Simage}`
-                      : `${data.img}`
-                  }
-                  alt=""
-                />
-              </div>
-            ))}
+            <div className="grid mt-20 gap-9">
+              {sideData.map((data) => (
+                <div className="  flex  justify-center">
+                  <img
+                    onClick={() => {
+                      router.push(data.path);
+                    }}
+                    className="w-6 h-6"
+                    src={
+                      data.path === router.pathname
+                        ? `${data.Simage}`
+                        : `${data.img}`
+                    }
+                    alt=""
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className=" w-11 ">
+          <div className=" w-8 ">
             <img src="assets/image-avatar.png" alt="" />
           </div>
         </div>

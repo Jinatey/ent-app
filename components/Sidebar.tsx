@@ -31,8 +31,8 @@ export const Sidebar = () => {
         </div>
 
         <div className="flex gap-5">
-          {sideData.map((data) => (
-            <div className=" ">
+          {sideData.map((data,idx) => (
+            <div key={idx} className=" ">
               <img
                 onClick={() => {
                   router.push(data.path);
@@ -61,8 +61,8 @@ export const Sidebar = () => {
             <img className="w- p-1 py-]" src="logo.svg" alt="" />
 
             <div className="grid mt-20 gap-9">
-              {sideData.map((data) => (
-                <div className="  flex  justify-center">
+              {sideData.map((data, idx) => (
+                <div key={idx}  className="  flex  justify-center">
                   <img
                     onClick={() => {
                       router.push(data.path);

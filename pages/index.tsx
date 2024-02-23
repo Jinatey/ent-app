@@ -1,14 +1,26 @@
-import { data } from "@/data";
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { useState } from "react";
+import { useSnapshot } from "valtio";
 
+import { data } from "@/data";
 import { MovieItem } from "@/components/MovieItem";
+import { state } from "@/store/store";
 
 export default function Home() {
   const [text, setText] = useState("");
   const filterBySearch = data?.filter((c) =>
     c.title.toLowerCase().includes(text.toLowerCase())
   );
+
+  useEffect(() => {
+    filterBySearch.map((dataItem) => {
+      state.bookmarks[dataItem.title] = false;
+    });
+  }, []);
+
+  const snap = useSnapshot(state);
+
+  // console.log(JSON.parse(JSON.stringify(state.bookmarks)));
 
   return (
     <div className=" pl-10   max-md:max-w-[750px]   text-blue-50">
@@ -33,8 +45,12 @@ export default function Home() {
           {data.map((item) => {
             if (item.isTrending) {
               const img = item?.thumbnail?.trending?.large;
+
               return (
-                <div className="item max-md:w-[300px] max-sm:w-[200px] overflow-hidden">
+                <div
+                  key={item.title}
+                  className="item max-md:w-[300px] max-sm:w-[200px] overflow-hidden"
+                >
                   <img
                     className=" rounded-md hover:scale-105 transition-all  "
                     src={img}
@@ -52,6 +68,8 @@ export default function Home() {
           </p>
           <div className="gridrec max-md:gap-5 max-md:grid-cols-3 max-sm:grid-cols-2">
             {filterBySearch.map((dataItem) => {
+              // state.bookmarks[dataItem.title] = false;
+
               return <MovieItem key={dataItem.title} dataItem={dataItem} />;
             })}
           </div>

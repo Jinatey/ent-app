@@ -8,9 +8,7 @@ type Props = {
 };
 
 export function MovieItem({ dataItem }: Props) {
-  // const [isTrue, setIsTrue] = useState(false);
-
-  const snap = useSnapshot(state.bookmarks);
+  const snap = useSnapshot(state);
 
   // console.log(JSON.parse(JSON.stringify(snap.bookmarks)));
 
@@ -28,31 +26,17 @@ export function MovieItem({ dataItem }: Props) {
         <div className=" flex justify-end cursor-pointer">
           <img
             onClick={() => {
-              // if(isTrue === true) {
-              //     setIsTrue(false)
-              // }  else{
-              //     setIsTrue(true)
+              // if (snap.bookmarks[dataItem.title] === true) {
+              //   state.bookmarks[dataItem.title] = false;
+              // } else {
+              //   state.bookmarks[dataItem.title] = true;
               // }
-              // state.bookmarks.push(dataItem.title);
 
-              // setIsTrue(!isTrue);
-
-              // console.log(snap.bookmarks[dataItem.title]);
-              if (state.bookmarks[dataItem.title] === true) {
-                state.bookmarks[dataItem.title] = false;
-              } else {
-                state.bookmarks[dataItem.title] = true;
-              }
-
-              const currState = state.bookmarks[dataItem.title];
-
-              console.log(!!currState);
-
-              // console.log(snap.bookmarks[dataItem.title]);
+              state.bookmarks[dataItem.title] = !snap.bookmarks[dataItem.title];
             }}
             className="absolute p-4 z-30"
             src={
-              snap[dataItem.title] === false
+              snap.bookmarks[dataItem.title] === false
                 ? "assets/icon-bookmark-empty.svg"
                 : "assets/icon-bookmark-full.svg"
             }

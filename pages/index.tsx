@@ -18,8 +18,6 @@ export default function Home() {
     });
   }, []);
 
-  const snap = useSnapshot(state);
-
   // console.log(JSON.parse(JSON.stringify(state.bookmarks)));
 
   return (
@@ -68,8 +66,6 @@ export default function Home() {
           </p>
           <div className="gridrec max-md:gap-5 max-md:grid-cols-3 max-sm:grid-cols-2">
             {filterBySearch.map((dataItem) => {
-              // state.bookmarks[dataItem.title] = false;
-
               return <MovieItem key={dataItem.title} dataItem={dataItem} />;
             })}
           </div>

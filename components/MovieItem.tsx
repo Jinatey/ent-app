@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MovieItemType } from "@/data";
 import { useSnapshot } from "valtio";
 import { state } from "@/store/store";
@@ -9,8 +8,7 @@ type Props = {
 
 export function MovieItem({ dataItem }: Props) {
   const snap = useSnapshot(state);
-
-  // console.log(JSON.parse(JSON.stringify(snap.bookmarks)));
+  const movieTitle = dataItem.title;
 
   return (
     <div className=" margin-auto  ">
@@ -32,11 +30,11 @@ export function MovieItem({ dataItem }: Props) {
               //   state.bookmarks[dataItem.title] = true;
               // }
 
-              state.bookmarks[dataItem.title] = !snap.bookmarks[dataItem.title];
+              state.bookmarks[movieTitle] = !snap.bookmarks[movieTitle];
             }}
             className="absolute p-4 z-30"
             src={
-              snap.bookmarks[dataItem.title] === false
+              snap.bookmarks[movieTitle] === false
                 ? "assets/icon-bookmark-empty.svg"
                 : "assets/icon-bookmark-full.svg"
             }
